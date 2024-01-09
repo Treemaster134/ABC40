@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto+Condensed:wght@700&display=swap');
+
+@font-face {
+    font-family: "ModernDOS";
+    src: url(assets/ModernDOS8x8.ttf);
+}
+
+body{
+    margin-left: 3%;
+    margin-right: 3%;
+    background-image: url(assets/yellowedplastic.png);
+    background-repeat: repeat;
+    overflow: hidden;
+}   
+
+html{
+    font-size: 16px;
+    font-family: 'Roboto Condensed', Aria, sans-serif;
+}
+
+input{
+    margin-left: 0px;
+    margin-bottom: 8px;
+}
+
+img{
+    max-width: 16px;
+    padding-right: 5px;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    background-color: #cacaca7f;
+}
+
+div{
+    padding: 10px;
+}
+
+.registerDisplay{
+    text-align: center;
+    resize: none;
+    height: 16px;
+    width: 64px;
+    color: black;
+}
+
+.counterDisplay{
+    text-align: center;
+    resize: none;
+    height: 16px;
+    width: 128px;
+}
+
+.instructions{
+    resize: none;
+}
+
+canvas{
+    border: 5px solid black;
+    background-color: black;
+}
+
+table{
+    background-color: black;
+}
+
+td{
+    background-color: white;
+    font-size: 65%;
+}

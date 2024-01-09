@@ -1,0 +1,466 @@
+<!--
+
+    Assembly
+    Baseline
+    Computer
+    40
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="computer.js"></script>
+</head>
+<body>
+
+    <h2>Assembly Baseline Computer 40</h2>
+    <div class="container">
+        
+        <div>
+            <h3>Register view</h3>
+            <label>00</label>
+            <textarea cols="5" rows="1" disabled id="mem0" class="registerDisplay">000000</textarea>
+            <br>
+            <label>01</label>
+            <textarea cols="5" rows="1" disabled id="mem1" class="registerDisplay">000000</textarea>
+            <br>
+            <label>02</label>
+            <textarea cols="5" rows="1" disabled id="mem2" class="registerDisplay">000000</textarea>
+            <br>
+            <label>03</label>
+            <textarea cols="5" rows="1" disabled id="mem3" class="registerDisplay">000000</textarea>
+            <br>
+            <label>04</label>
+            <textarea cols="5" rows="1" disabled id="mem4" class="registerDisplay">000000</textarea>
+            <br>
+            <label>05</label>
+            <textarea cols="5" rows="1" disabled id="mem5" class="registerDisplay">000000</textarea>
+            <br>
+            <label>06</label>
+            <textarea cols="5" rows="1" disabled id="mem6" class="registerDisplay">000000</textarea>
+            <br>
+            <label>07</label>
+            <textarea cols="5" rows="1" disabled id="mem7" class="registerDisplay">000000</textarea>
+            <br>
+            <label>08</label>
+            <textarea cols="5" rows="1" disabled id="mem8" class="registerDisplay">000000</textarea>
+            <br>
+            <label>09</label>
+            <textarea cols="5" rows="1" disabled id="mem9" class="registerDisplay">000000</textarea>
+            <br>
+            <label>0A</label>
+            <textarea cols="5" rows="1" disabled id="mem10" class="registerDisplay">000000</textarea>
+            <br>
+            <label>0B</label>
+            <textarea cols="5" rows="1" disabled id="mem11" class="registerDisplay">000000</textarea>
+            <br>
+            <label>0C</label>
+            <textarea cols="5" rows="1" disabled id="mem12" class="registerDisplay">000000</textarea>
+            <br>
+            <label>0D</label>
+            <textarea cols="5" rows="1" disabled id="mem13" class="registerDisplay">000000</textarea>
+            <br>
+            <label>0E</label>
+            <textarea cols="5" rows="1" disabled id="mem14" class="registerDisplay">000000</textarea>
+            <br>
+            <label>0F</label>
+            <textarea cols="5" rows="1" disabled id="mem15" class="registerDisplay">000000</textarea>
+            <br>
+            
+        </div>
+        <div>
+            <h3 style="color: #cacaca;">.</h3>
+            <label>10</label>
+            <textarea cols="5" rows="1" disabled id="mem16" class="registerDisplay">000000</textarea>
+            <br>
+            <label>11</label>
+            <textarea cols="5" rows="1" disabled id="mem17" class="registerDisplay">000000</textarea>
+            <br>
+            <label>12</label>
+            <textarea cols="5" rows="1" disabled id="mem18" class="registerDisplay">000000</textarea>
+            <br>
+            <label>13</label>
+            <textarea cols="5" rows="1" disabled id="mem19" class="registerDisplay">000000</textarea>
+            <br>
+            <label>14</label>
+            <textarea cols="5" rows="1" disabled id="mem20" class="registerDisplay">000000</textarea>
+            <br>
+            <label>15</label>
+            <textarea cols="5" rows="1" disabled id="mem21" class="registerDisplay">000000</textarea>
+            <br>
+            <label>16</label>
+            <textarea cols="5" rows="1" disabled id="mem22" class="registerDisplay">000000</textarea>
+            <br>
+            <label>17</label>
+            <textarea cols="5" rows="1" disabled id="mem23" class="registerDisplay">000000</textarea>
+            <br>
+            <label>18</label>
+            <textarea cols="5" rows="1" disabled id="mem24" class="registerDisplay">000000</textarea>
+            <br>
+            <label>19</label>
+            <textarea cols="5" rows="1" disabled id="mem25" class="registerDisplay">000000</textarea>
+            <br>
+            <label>1A</label>
+            <textarea cols="5" rows="1" disabled id="mem26" class="registerDisplay">000000</textarea>
+            <br>
+            <label>1B</label>
+            <textarea cols="5" rows="1" disabled id="mem27" class="registerDisplay">000000</textarea>
+            <br>
+            <label>1C</label>
+            <textarea cols="5" rows="1" disabled id="mem28" class="registerDisplay">000000</textarea>
+            <br>
+            <label>1D</label>
+            <textarea cols="5" rows="1" disabled id="mem29" class="registerDisplay">000000</textarea>
+            <br>
+            <label>1E</label>
+            <textarea cols="5" rows="1" disabled id="mem30" class="registerDisplay">000000</textarea>
+            <br>
+            <label>1F</label>
+            <textarea cols="5" rows="1" disabled id="mem31" class="registerDisplay">000000</textarea>
+            <br>
+            
+        </div>
+        <div>
+            <h3>Status</h3>
+            <br>
+            <input type="button" value="RUN" onclick="startRunning()">
+            <br>
+            <img src="assets/off.png" id="pausedLight"><label>Paused </label>
+            <br>
+            <img src="assets/off.png" id="stoppedLight"><label>Stopped </label>
+            <br>
+            <br>
+            <h3>Program counter</h3>
+            <textarea cols="10" rows="1" disabled class="counterDisplay" id="counterDisplay">0000000000000000</textarea>
+            <h3>Stack pointer</h3>
+            <textarea cols="10" rows="1" disabled class="counterDisplay" id="spDisplay">00000000</textarea>
+            <h3>Input</h3>
+            <input type="button" value="0" onclick="switchButton(this.value, this)" id="inputbutton0">
+            <input type="button" value="0" onclick="switchButton(this.value, this)" id="inputbutton1">
+            <input type="button" value="0" onclick="switchButton(this.value, this)" id="inputbutton2">
+            <input type="button" value="0" onclick="switchButton(this.value, this)" id="inputbutton3">
+            <input type="button" value="0" onclick="switchButton(this.value, this)" id="inputbutton4">
+            <input type="button" value="0" onclick="switchButton(this.value, this)" id="inputbutton5">
+            <input type="button" value="0" onclick="switchButton(this.value, this)" id="inputbutton6">
+            <input type="button" value="0" onclick="switchButton(this.value, this)" id="inputbutton7">
+            <br>
+            <input type="button" value="Continue" onclick="resume()">
+        </div>
+        <div>
+            <h3>Program</h3>
+            <textarea name="" id="instructions" cols="24" rows="30" class="instructions"></textarea>
+        </div>
+        <div>
+            <h3>Instructions</h3>
+            <table>
+                <tr>
+                    <td>Mnemonic</td>
+                    <td>Argument(s)</td>
+                    <td>Operation</td>
+                </tr>
+                <tr>
+                    <td>NOP</td>
+                    <td>None</td>
+                    <td>No operation</td>
+                </tr>
+                <tr>
+                    <td>HLT</td>
+                    <td>None</td>
+                    <td>Stop execution</td>
+                </tr>
+                <tr>
+                    <td>WAI</td>
+                    <td>None</td>
+                    <td>Pauses execution</td>
+                </tr>
+                <tr>
+                    <td>LDR</td>
+                    <td>src</td>
+                    <td>Accumulator ← src</td>
+                </tr>
+                <tr>
+                    <td>LDR</td>
+                    <td>value</td>
+                    <td>Accumulator ← value</td>
+                </tr>
+                <tr>
+                    <td>STO</td>
+                    <td>dest</td>
+                    <td>dest ← Accumulator</td>
+                </tr>
+                <tr>
+                    <td>MOV</td>
+                    <td>src, dest</td>
+                    <td>dest ← src</td>
+                </tr>
+                <tr>
+                    <td>SWA</td>
+                    <td>reg1, reg2</td>
+                    <td>reg1 ↔ reg2</td>
+                </tr>
+                <tr>
+                    <td>LSH</td>
+                    <td>None</td>
+                    <td>Shift accumulator left</td>
+                </tr>
+                <tr>
+                    <td>RSH</td>
+                    <td>None</td>
+                    <td>Shift accumulator right</td>
+                </tr>
+                <tr>
+                    <td>INC</td>
+                    <td>None</td>
+                    <td>Accumulator += 1</td>
+                </tr>
+                <tr>
+                    <td>DEC</td>
+                    <td>None</td>
+                    <td>Accumulator -= 1</td>
+                </tr>
+                <tr>
+                    <td>ADR</td>
+                    <td>src</td>
+                    <td>Accumulator += src</td>
+                </tr>
+                <tr>
+                    <td>ADI</td>
+                    <td>value</td>
+                    <td>Accumulator += value</td>
+                </tr>
+                <tr>
+                    <td>SBR</td>
+                    <td>src</td>
+                    <td>Accumulator -= src</td>
+                </tr>
+                <tr>
+                    <td>SBI</td>
+                    <td>value</td>
+                    <td>Accumulator -= value</td>
+                </tr>
+                <tr>
+                    <td>JMZ</td>
+                    <td>instruction</td>
+                    <td>PC ← instruction if accumulator == 0</td>
+                </tr>
+                <tr>
+                    <td>JMP</td>
+                    <td>instruction</td>
+                    <td>PC ← instruction if accumulator > 0</td>
+                </tr>
+                <tr>
+                    <td>JMN</td>
+                    <td>instruction</td>
+                    <td>PC ← instruction if accumulator < 0</td>
+                </tr>
+                <tr>
+                    <td>JMU</td>
+                    <td>instruction</td>
+                    <td>PC ← instruction</td>
+                </tr>
+                <tr>
+                    <td>RND</td>
+                    <td>min, max</td>
+                    <td>Accumulator ← Random(min, max)</td>
+                </tr>
+                <tr>
+                    <td>ORI</td>
+                    <td>value</td>
+                    <td>Accumulator | value</td>
+                </tr>
+                <tr>
+                    <td>ORR</td>
+                    <td>src</td>
+                    <td>Accumulator | src</td>
+                </tr>
+                <tr>
+                    <td>XOI</td>
+                    <td>value</td>
+                    <td>Accumulator ^ value</td>
+                </tr>
+                <tr>
+                    <td>XOR</td>
+                    <td>src</td>
+                    <td>Accumulator ^ src</td>
+                </tr>
+                <tr>
+                    <td>ANI</td>
+                    <td>value</td>
+                    <td>Accumulator & value</td>
+                </tr>
+                <tr>
+                    <td>ANR</td>
+                    <td>src</td>
+                    <td>Accumulator & src</td>
+                </tr>
+                <tr>
+                    <td>POP</td>
+                    <td>None</td>
+                    <td>Pop Accumulator</td>
+                </tr>
+                <tr>
+                    <td>PSH</td>
+                    <td>None</td>
+                    <td>Push Accumulator</td>
+                </tr>
+                <tr>
+                    <td>INP</td>
+                    <td>None</td>
+                    <td>Input</td>
+                </tr>
+                <tr>
+                    <td>OUT</td>
+                    <td>None</td>
+                    <td>Output</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h3>Output</h3>
+            <Canvas width="420px" height="240px" id="consoleOutput" style="font-family: ModernDOS;"></Canvas>
+            <br>
+            <Canvas width="320px" height="160px" id="pixelOutput" style="font-family: ModernDOS;"></Canvas>
+        </div>
+
+    </div>
+    
+    <script>
+        init();
+        setDisplays();
+        let ignoreIncrement = false;
+
+        setInterval(update, 10);
+        
+        function update()
+        {   
+            ignoreIncrement = false;
+            if(Registers["00"][0] == 0 && Registers["00"][1] == 0)
+            {
+                let brokenDownInstruction = instructions[programCounter].split(" ");
+
+                switch(brokenDownInstruction[0])
+                {
+                    case "NOP":
+                        break;
+                    case "HLT":
+                        halt();
+                        break;
+                    case "LDR":
+                        loadRegister(brokenDownInstruction[1]);
+                        break;
+                    case "LDI":
+                        loadImmediate(brokenDownInstruction[1]);
+                        break;
+                    case "STO":
+                        store(brokenDownInstruction[1]);
+                        break;
+                    case "MOV":
+                        move(brokenDownInstruction[1], brokenDownInstruction[2]);
+                        break;
+                    case "SWA":
+                        swap(brokenDownInstruction[1], brokenDownInstruction[2]);
+                        break;
+                    case "LSH":
+                        leftShift();
+                        break;
+                    case "RSH":
+                        rightShift();
+                        break;
+                    case "INC":
+                        increment();
+                        break;
+                    case "DEC":
+                        decrement();
+                        break;
+                    case "ADR":
+                        addRegister(brokenDownInstruction[1]);
+                        break;
+                    case "ADI":
+                        addImmediate(brokenDownInstruction[1]);
+                        break;
+                    case "SBR":
+                        subRegister(brokenDownInstruction[1]);
+                        break;
+                    case "SBI":
+                        subImmediate(brokenDownInstruction[1]);
+                        break;
+                    case "OUT":
+                        output();
+                        break;
+                    case "INP":
+                        input();
+                        break;
+                    case "JMZ":
+                        jumpIfZero(brokenDownInstruction[1]);
+                        break;
+                    case "JMP":
+                        jumpIfPositive(brokenDownInstruction[1]);
+                        break;
+                    case "JMN":
+                        jumpIfNegative(brokenDownInstruction[1]);
+                        break;
+                    case "JMU":
+                        jumpUnconditional(brokenDownInstruction[1]);
+                        break;
+                    case "RND":
+                        randomNumber(brokenDownInstruction[1], brokenDownInstruction[2]);
+                        break;
+                    case "ORI":
+                        orImmediate(brokenDownInstruction[1]);
+                        break;
+                    case "ORR":
+                        orRegister(brokenDownInstruction[1]);
+                        break;
+                    case "XOI":
+                        xorImmediate(brokenDownInstruction[1]);
+                        break;
+                    case "XOR":
+                        xorRegister(brokenDownInstruction[1]);
+                        break;
+                    case "ANI":
+                        andImmediate(brokenDownInstruction[1]);
+                        break;
+                    case "ANR":
+                        andRegister(brokenDownInstruction[1]);
+                        break;
+                    case "WAI":
+                        wait();
+                        break;
+                    case "POP":
+                        stackPop();
+                        break;
+                    case "PSH":
+                        stackPush();
+                        break;
+                    default:
+                        break;
+                        
+                }
+                
+                if(ignoreIncrement == false){programCounter += 1;}
+            }
+            
+            setDisplays();
+        }
+        /*
+        ORI
+        ORR
+
+        XOI
+        XOR
+
+        ANI
+        ANR
+
+        */
+        
+
+    </script>
+</body>
+</html>
