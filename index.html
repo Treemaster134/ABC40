@@ -342,100 +342,100 @@
             ignoreIncrement = false;
             if(Registers["00"][0] == 0 && Registers["00"][1] == 0)
             {
-                let brokenDownInstruction = instructions[programCounter].split(" ");
+                let brokenDownInstruction = instructions[programCounter].match(/.{1,8}/g);
 
                 switch(brokenDownInstruction[0])
                 {
-                    case "NOP":
+                    case "00000000":
                         break;
-                    case "HLT":
+                    case "00000001":
                         halt();
                         break;
-                    case "LDR":
+                    case "00000011":
                         loadRegister(brokenDownInstruction[1]);
                         break;
-                    case "LDI":
+                    case "00000100":
                         loadImmediate(brokenDownInstruction[1]);
                         break;
-                    case "STO":
+                    case "00000101":
                         store(brokenDownInstruction[1]);
                         break;
-                    case "MOV":
+                    case "00000110":
                         move(brokenDownInstruction[1], brokenDownInstruction[2]);
                         break;
-                    case "SWA":
+                    case "00000111":
                         swap(brokenDownInstruction[1], brokenDownInstruction[2]);
                         break;
-                    case "LSH":
+                    case "00001000":
                         leftShift();
                         break;
-                    case "RSH":
+                    case "00001001":
                         rightShift();
                         break;
-                    case "INC":
+                    case "00001010":
                         increment();
                         break;
-                    case "DEC":
+                    case "00001011":
                         decrement();
                         break;
-                    case "ADR":
+                    case "00001100":
                         addRegister(brokenDownInstruction[1]);
                         break;
-                    case "ADI":
+                    case "00001101":
                         addImmediate(brokenDownInstruction[1]);
                         break;
-                    case "SBR":
+                    case "00001110":
                         subRegister(brokenDownInstruction[1]);
                         break;
-                    case "SBI":
+                    case "00001111":
                         subImmediate(brokenDownInstruction[1]);
                         break;
-                    case "OUT":
+                    case "00011110":
                         output();
                         break;
-                    case "INP":
+                    case "00011101":
                         input();
                         break;
-                    case "JMZ":
-                        jumpIfZero(brokenDownInstruction[1]);
+                    case "00010000":
+                        jumpIfZero(brokenDownInstruction[1] + "" + brokenDownInstruction[2]);
                         break;
-                    case "JMP":
-                        jumpIfPositive(brokenDownInstruction[1]);
+                    case "00010001":
+                        jumpIfPositive(brokenDownInstruction[1] + "" + brokenDownInstruction[2]);
                         break;
-                    case "JMN":
-                        jumpIfNegative(brokenDownInstruction[1]);
+                    case "00010010":
+                        jumpIfNegative(brokenDownInstruction[1] + "" + brokenDownInstruction[2]);
                         break;
-                    case "JMU":
-                        jumpUnconditional(brokenDownInstruction[1]);
+                    case "00010011":
+                        jumpUnconditional(brokenDownInstruction[1] + "" + brokenDownInstruction[2]);
                         break;
-                    case "RND":
+                    case "00010100":
                         randomNumber(brokenDownInstruction[1], brokenDownInstruction[2]);
                         break;
-                    case "ORI":
+                    case "00010101":
                         orImmediate(brokenDownInstruction[1]);
                         break;
-                    case "ORR":
+                    case "00010110":
                         orRegister(brokenDownInstruction[1]);
                         break;
-                    case "XOI":
+                    case "00011001":
                         xorImmediate(brokenDownInstruction[1]);
                         break;
-                    case "XOR":
+                    case "00011010":
                         xorRegister(brokenDownInstruction[1]);
                         break;
-                    case "ANI":
+                    case "00010111":
                         andImmediate(brokenDownInstruction[1]);
                         break;
-                    case "ANR":
+                    case "00011000":
                         andRegister(brokenDownInstruction[1]);
                         break;
-                    case "WAI":
+                    case "00000010":
                         wait();
                         break;
-                    case "POP":
+                    case "00011011":
                         stackPop();
                         break;
-                    case "PSH":
+                    case "00011100":
                         stackPush();
                         break;
                     default:

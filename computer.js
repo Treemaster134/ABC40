@@ -64,6 +64,17 @@ let consoleOutput = [
     []
 ];
 
+function convertBinaryToRegisterAddress(data)
+{
+    let newadress = Number(new Int8Array(["0b" + data])).toString(16);
+    if(newadress.length < 2)
+    {
+        newadress = "0" + newadress;
+    }
+
+    return newadress;
+    
+}
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -229,7 +240,7 @@ function switchButton(ogVal, element)
 /* Loading to accumulator */ 
 function loadRegister(address) //LDA
 {
-    Registers["01"] = Registers[address].substring(0, 8);
+    Registers["01"] = Registers[convertBinaryToRegisterAddress(address)].substring(0, 8);
 }
 
 function loadImmediate(data) //LDI
@@ -241,23 +252,23 @@ function loadImmediate(data) //LDI
 /* Store */
 function store(address) //STO
 {
-    Registers[address] = Registers["01"].substring(0, 8);
+    Registers[convertBinaryToRegisterAddress(address)] = Registers["01"].substring(0, 8);
 }
 
 
 /* Move */
 function move(src, dest) //MOV
 {
-    Registers[dest] = Registers[src].substring(0, 8);
+    Registers[convertBinaryToRegisterAddress(dest)] = Registers[convertBinaryToRegisterAddress(src)].substring(0, 8);
 }
 
 
 /* Swap */
 function swap(reg1, reg2) //SWA
 {
-    let temp = Registers[reg1].substring(0, 8);
-    Registers[reg1] = Registers[reg2].substring(0, 8);
-    Registers[reg2] = temp;
+    let temp = Registers[convertBinaryToRegisterAddress(reg1)].substring(0, 8);
+    Registers[convertBinaryToRegisterAddress(reg1)] = Registers[convertBinaryToRegisterAddress(reg2)].substring(0, 8);
+    Registers[convertBinaryToRegisterAddress(reg2)] = temp;
 }
 
 
@@ -287,7 +298,7 @@ function decrement() //DEC
 /* Adding */
 function addRegister(address) //ADR  .substring(0, 8);
 {
-    let decimal = Number(new Int8Array(["0b" + Registers["01"]])) + Number(new Int8Array(["0b" + Registers[address]]));
+    let decimal = Number(new Int8Array(["0b" + Registers["01"]])) + Number(new Int8Array(["0b" + Registers[convertBinaryToRegisterAddress(address)]]));
     clampDecimal(decimal);
     Registers["01"] = correctBinary(decimal, 8).join("");
 }
@@ -303,7 +314,7 @@ function addImmediate(data) //ADI
 /* Subtracting */
 function subRegister(address) //SBR
 {
-    let decimal = Number(new Int8Array(["0b" + Registers["01"]])) - Number(new Int8Array(["0b" + Registers[address]]));
+    let decimal = Number(new Int8Array(["0b" + Registers["01"]])) - Number(new Int8Array(["0b" + Registers[convertBinaryToRegisterAddress(address)]]));
     clampDecimal(decimal);
     Registers["01"] = correctBinary(decimal, 8).join("");
 }
@@ -333,22 +344,17 @@ function stackPop()
 /* Output and input */ 
 function output() //OUT
 {
-    if(Registers["00"][2] == "1")
-    {  
-        if(Registers["03"] == "00001010")
-        {
-            consoleOutput.shift();
-            consoleOutput.push([]);
-        }
-        else
-        {
-            consoleOutput[consoleOutput.length - 1].push(String.fromCharCode("0b" + Registers["03"]));
-        }
+    
+    if(Registers["03"] == "00001010")
+    {
+        consoleOutput.shift();
+        consoleOutput.push([]);
     }
     else
     {
-        consoleOutput[consoleOutput.length - 1].push(Number(new Int8Array(["0b" + Registers["03"]])));
+        consoleOutput[consoleOutput.length - 1].push(String.fromCharCode("0b" + Registers["03"]));
     }
+    
 
     outputConsole.clearRect(0,0,420,240);
     outputConsole.font = "32px ModernDOS";
@@ -481,7 +487,7 @@ function orRegister(address)
     let tempdata = [0,0,0,0,0,0,0,0];
     for(let i = 0; i < 8; i++)
     {
-        if(Registers[address][i] == 1 || Registers["01"][i] == 1)
+        if(Registers[convertBinaryToRegisterAddress(address)][i] == 1 || Registers["01"][i] == 1)
         {
             tempdata[i] = 1;
         }
@@ -507,7 +513,7 @@ function xorRegister(address)
     let tempdata = [0,0,0,0,0,0,0,0];
     for(let i = 0; i < 8; i++)
     {
-        if(Registers[address][i] != Registers["01"][i])
+        if(Registers[convertBinaryToRegisterAddress(address)][i] != Registers["01"][i])
         {
             tempdata[i] = 1;
         }
@@ -533,7 +539,7 @@ function andRegister(address)
     let tempdata = [0,0,0,0,0,0,0,0];
     for(let i = 0; i < 8; i++)
     {
-        if(Registers[address][i] == 1 && Registers["01"][i] == 1)
+        if(Registers[convertBinaryToRegisterAddress(address)][i] == 1 && Registers["01"][i] == 1)
         {
             tempdata[i] = 1;
         }
