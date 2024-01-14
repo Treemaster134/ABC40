@@ -172,16 +172,16 @@
     <script>
         init();
         setDisplays();
-        let ignoreIncrement = false;
 
         setInterval(update, 10);
         
         function update()
         {   
-            ignoreIncrement = false;
             if(Registers["00"][0] == 0 && Registers["00"][1] == 0)
             {
                 let brokenDownInstruction = instructions[programCounter].match(/.{1,8}/g);
+
+                programCounter += 1;
 
                 switch(brokenDownInstruction[0])
                 {
@@ -282,7 +282,7 @@
                         
                 }
                 
-                if(ignoreIncrement == false){programCounter += 1;}
+                
             }
             
             setDisplays();

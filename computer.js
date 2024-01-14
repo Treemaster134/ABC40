@@ -428,7 +428,6 @@ function jumpUnconditional(instruction) //JMU
 {
     let convertedInstruction = Number(new Int16Array(["0b" + instruction]));
     programCounter = convertedInstruction;
-    ignoreIncrement = true;
 }
 
 /* Random */
@@ -443,7 +442,6 @@ function halt() //HLT
     let tempReg = Registers["00"].split("");
     tempReg[1] = "1";
     Registers["00"] = tempReg.join("");
-    ignoreIncrement = true;
 }
 
 function wait()
@@ -451,7 +449,6 @@ function wait()
     let tempReg = Registers["00"].split("");
     tempReg[0] = "1";
     Registers["00"] = tempReg.join("");
-    ignoreIncrement = true;
 }
 
 function resume()
