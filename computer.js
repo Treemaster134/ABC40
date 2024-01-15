@@ -433,7 +433,7 @@ function jumpUnconditional(instruction) //JMU
 /* Random */
 function randomNumber(min, max) //RND
 {   
-    Registers["01"] = correctBinary(getRandomInt(new Int8Array([min]), new Int8Array([max])), 8).join("");
+    Registers["01"] = correctBinary(getRandomInt(Number(new Int8Array(["0b" + min])), Number(new Int8Array(["0b" + max]))), 8).join("");
 }   
 
 /* Halt and wait*/
